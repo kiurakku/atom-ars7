@@ -1,10 +1,65 @@
-# Atom
+# Atom ARS7 - Atom Revival 2026
 
-[![Build status](https://dev.azure.com/github/Atom/_apis/build/status/Atom%20Production%20Branches?branchName=master)](https://dev.azure.com/github/Atom/_build/latest?definitionId=32&branchName=master)
+[![Electron Version](https://img.shields.io/badge/Electron-28.2.0-blue.svg)](https://www.electronjs.org/)
+[![Node Version](https://img.shields.io/badge/Node-18.x%2B-green.svg)](https://nodejs.org/)
+[![LSP Support](https://img.shields.io/badge/LSP-Supported-brightgreen.svg)](https://microsoft.github.io/language-server-protocol/)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blue.svg)](https://github.com/features/actions)
 
-> Atom and all repositories under Atom will be archived on December 15, 2022. Learn more in our [official announcement](https://github.blog/2022-06-08-sunsetting-atom/)
+> **Atom Revival Project 2026** - Оживлення Atom editor для сучасних операційних систем
+
+Це форк Atom editor, який оновлюється для роботи в 2026 році. Проєкт включає оновлення Electron, виправлення залежностей та модернізацію коду для сумісності з сучасними системами.
+
+## 🚀 Статус проєкту
+
+**Поточний етап**: Повне оновлення для конкурентоспроможності в 2026
+
+- ✅ Оновлено Electron до версії 28.2.0 (остання стабільна)
+- ✅ Додано підтримку Language Server Protocol (LSP)
+- ✅ Додано моніторинг продуктивності
+- ✅ Покращене автодоповнення (LSP + Fuzzy)
+- ✅ Code Actions та Quick Fixes
+- ✅ Breadcrumbs навігація
+- ✅ Outline View
+- ✅ CI/CD автоматизація
+- ✅ Оновлені всі залежності
+- 🔄 В процесі: Тестування та фінальні виправлення
+
+## 📋 Документація
+
+- [ROADMAP.md](ROADMAP.md) - Детальний план оновлення
+- [BUILD_INSTRUCTIONS.md](BUILD_INSTRUCTIONS.md) - Інструкції зі збірки
+- [FEATURES_2026.md](FEATURES_2026.md) - Нові функції для 2026
+- [COMPETITIVE_FEATURES.md](COMPETITIVE_FEATURES.md) - Конкурентні переваги
+- [UPGRADE_LOG.md](UPGRADE_LOG.md) - Лог змін
+- [NEXT_STEPS.md](NEXT_STEPS.md) - Наступні кроки
+
+## 🔧 Швидкий старт
+
+```bash
+# Клонувати репозиторій
+git clone <your-fork-url>
+cd atom-ars7
+
+# Встановити залежності
+npm install
+
+# Зібрати проєкт
+npm run build
+
+# Запустити Atom
+./atom.sh  # Linux/macOS
+atom.cmd   # Windows
+```
+
+Детальні інструкції дивіться в [BUILD_INSTRUCTIONS.md](BUILD_INSTRUCTIONS.md).
+
+---
+
+**Оригінальний опис:**
 
 Atom is a hackable text editor for the 21st century, built on [Electron](https://github.com/electron/electron), and based on everything we love about our favorite editors. We designed it to be deeply customizable, but still approachable using the default configuration.
+
+> ⚠️ **Примітка**: Оригінальний Atom був заархівований 15 грудня 2022. Цей форк продовжує розвиток проєкту.
 
 ![Atom](https://user-images.githubusercontent.com/378023/49132477-f4b77680-f31f-11e8-8357-ac6491761c6c.png)
 

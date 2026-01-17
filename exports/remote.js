@@ -1,4 +1,12 @@
-module.exports = require('electron').remote;
+// Use @electron/remote for Electron 12+ compatibility
+let remote;
+try {
+  remote = require('@electron/remote');
+} catch (e) {
+  // Fallback to electron.remote for older Electron versions
+  remote = require('electron').remote;
+}
+module.exports = remote;
 
 const Grim = require('grim');
 Grim.deprecate(

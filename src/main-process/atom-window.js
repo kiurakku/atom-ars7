@@ -56,9 +56,7 @@ module.exports = class AtomWindow extends EventEmitter {
         disableBlinkFeatures: 'Auxclick',
         nodeIntegration: true,
         webviewTag: true,
-
-        // TodoElectronIssue: remote module is deprecated https://www.electronjs.org/docs/breaking-changes#default-changed-enableremotemodule-defaults-to-false
-        enableRemoteModule: true,
+        contextIsolation: false, // Required for @electron/remote compatibility
         // node support in threads
         nodeIntegrationInWorker: true
       },
@@ -77,6 +75,14 @@ module.exports = class AtomWindow extends EventEmitter {
     const BrowserWindowConstructor =
       settings.browserWindowConstructor || BrowserWindow;
     this.browserWindow = new BrowserWindowConstructor(options);
+
+    // Enable @electron/remote for this window (Electron 12+)
+    try {
+      require('@electron/remote/main').enable(this.browserWindow.webContents);
+    } catch (e) {
+      // @electron/remote might not be installed yet, this is OK during initial migration
+      console.warn('@electron/remote not available:', e.message);
+    }
 
     Object.defineProperty(this.browserWindow, 'loadSettingsJSON', {
       get: () =>

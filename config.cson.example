@@ -1,0 +1,74 @@
+# Конфігурація Atom ARS7 для 2026
+# Скопіюйте цей файл в ~/.atom/config.cson та налаштуйте під себе
+
+"*":
+  # Основні налаштування
+  core:
+    # Автозбереження
+    autoSave: true
+    
+    # Телеметрія (вимкнено за замовчуванням)
+    telemetryConsent: "no"
+    
+    # Використання LSP
+    useLanguageServer: true
+    
+    # Покращене автодоповнення
+    enhancedAutocomplete: true
+    
+    # Моніторинг продуктивності
+    performanceMonitoring: true
+  
+  # Налаштування редактора
+  editor:
+    # Розмір шрифту
+    fontSize: 14
+    
+    # Висота рядка
+    lineHeight: 1.6
+    
+    # Показувати номери рядків
+    showLineNumbers: true
+    
+    # Показувати мінімапу
+    showMiniMap: true
+    
+    # Показувати breadcrumbs
+    showBreadcrumbs: true
+    
+    # Показувати outline
+    showOutline: true
+    
+    # Автодоповнення
+    autocomplete:
+      enabled: true
+      useLSP: true
+      useFuzzy: true
+  
+  # LSP сервери
+  languageServer:
+    enabled: true
+    servers:
+      "source.javascript":
+        command: "node"
+        args: ["path/to/typescript-language-server", "--stdio"]
+        enabled: false
+      "source.python":
+        command: "pylsp"
+        args: []
+        enabled: false
+      "source.go":
+        command: "gopls"
+        args: []
+        enabled: false
+  
+  # AI допомога (майбутнє)
+  aiAssist:
+    enabled: false
+    provider: null
+  
+  # Продуктивність
+  performance:
+    monitoring: true
+    memoryThreshold: 500 # MB
+    slowRenderThreshold: 16 # ms

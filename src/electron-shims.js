@@ -43,8 +43,22 @@ electron.ipcRenderer.sendChannel = function() {
   return this.send.apply(this, arguments);
 };
 
-const remoteRequire = electron.remote.require;
-electron.remote.require = function(moduleName) {
+// Use @electron/remote for Electron 12+ compatibility
+let remote;
+try {
+  remote = require('@electron/remote');
+} catch (e) {
+  // Fallback to electron.remote for older Electron versions
+  remote = electron.remote;
+}
+
+// Create a shim for electron.remote if using @electron/remote
+if (!electron.remote && remote) {
+  electron.remote = remote;
+}
+
+const remoteRequire = remote.require;
+remote.require = function(moduleName) {
   const Grim = require('grim');
   switch (moduleName) {
     case 'menu':

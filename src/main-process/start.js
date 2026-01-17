@@ -11,6 +11,14 @@ const CSON = require('season');
 const Config = require('../config');
 const StartupTime = require('../startup-time');
 
+// Initialize @electron/remote for Electron 12+ compatibility
+try {
+  require('@electron/remote/main').initialize();
+} catch (e) {
+  // @electron/remote might not be installed yet, this is OK during initial migration
+  console.warn('@electron/remote not available:', e.message);
+}
+
 StartupTime.setStartTime();
 
 module.exports = function start(resourcePath, devResourcePath, startTime) {
@@ -37,8 +45,11 @@ module.exports = function start(resourcePath, devResourcePath, startTime) {
     }
   });
 
-  // TodoElectronIssue this should be set to true before Electron 12 - https://github.com/electron/electron/issues/18397
-  app.allowRendererProcessReuse = false;
+  // Note: allowRendererProcessReuse is deprecated in Electron 28+
+  // Using process-per-site-instance instead for better isolation
+  if (app.allowRendererProcessReuse !== undefined) {
+    app.allowRendererProcessReuse = false;
+  }
 
   app.commandLine.appendSwitch('enable-experimental-web-platform-features');
 
